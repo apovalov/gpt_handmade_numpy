@@ -6,13 +6,6 @@ def linear(x, w, b):
 def softmax(x):
     e_x = np.exp(x - np.max(x, axis=-1, keepdims=True))
     return e_x / e_x.sum(axis=-1, keepdims=True)
-
-# def attention(q, k, v):
-#     d_k = q.shape[-1]
-#     scores = q @ k.transpose(-2, -1) / np.sqrt(d_k)
-#     weights = softmax(scores)
-#     return weights @ v
-
 def attention(q, k, v):
     d_k = q.shape[-1]
     scores = q @ k.T / np.sqrt(d_k)  # Используем k.T для транспонирования
